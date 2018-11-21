@@ -51,4 +51,9 @@ bool ISEMPTY(LinkList list) {
 
 LinkList FIND(LinkList list, ElemType item) {
 
+	for (LinkList p = list; p != nullptr; p = p->link) {
+		if (p->data == item)
+			return p;
+	}
+	return nullptr;
 }
