@@ -12,14 +12,18 @@ int main() {
 	cout << "linear practice." << endl;
 
 	LinkList list = CREATE(10);
-	LinkList p = nullptr;
-	for (p = list; p != nullptr; p = p->link) {
-		cout << p->data << ' ';
-	}
-	cout << endl;
+	PRINTLIST(list);
 
-	cout << LINKLEN(list) << endl;
-	cout << ISEMPTY(list) << endl;
+	cout << "linklist length: " << LINKLEN(list) << endl;
+	cout << "is empty?: " << ISEMPTY(list) << endl;
+
+	INSERTLINK1(&list, 22);
+	INSERTLINK2(list, 11);
+	INSERTLINK3(&list, list->link, 44);
+	PRINTLIST(list);
+
+
+
 	system("pause");
 	exit(0);
 }
