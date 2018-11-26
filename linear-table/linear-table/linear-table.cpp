@@ -140,6 +140,7 @@ void INSERTLINK4(LinkList list, const int i, ElemType item) {
 
 void INSERTLINK5(LinkList *list, ElemType item) {
 
+
 }
 
 
