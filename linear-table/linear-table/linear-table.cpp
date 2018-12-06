@@ -138,9 +138,134 @@ void INSERTLINK4(LinkList list, const int i, ElemType item) {
 	p->link = q;
 }
 
+// ´ý¼ìÑé
 void INSERTLINK5(LinkList *list, ElemType item) {
+
+	LinkList pre = nullptr;
+	LinkList cur = nullptr;
+	LinkList temp = nullptr;
+	cur = *list;
+	pre = cur;
+
+	while (cur != nullptr) {
+		if (cur->data > item) {
+			temp = (LinkList)malloc(sizeof(LNode));
+			if (temp != nullptr) {
+				temp->data = item;
+				temp->link = cur;
+				if (pre == *list)
+					pre = temp;
+				pre->link = temp;
+			}
+			return;
+		}
+		pre = cur;
+		cur = cur->link;
+	}
+	temp = (LinkList)malloc(sizeof(LNode));
+	if (temp != nullptr) {
+		temp->data = item;
+		temp->link = nullptr;
+		pre->link = temp;
+	}
+	return;
+
+}
+
+
+void DELETELINK1(LinkList *list, LinkList q) {
+
+	LinkList p = nullptr;
+	p = *list;
+	if (q == *list) {
+		*list = (*list)->link;
+		free(p);
+		return;
+	}
+	while (p->link != q && p->link != nullptr)
+		p = p->link;
+	if (p->link == nullptr)
+		return;
+	else {
+		p->link = q->link;
+		free(q);
+	}
+	return;
+
+}
+
+
+void DELETELIST(LinkList *list) {
+
+	LinkList p = *list;
+	while (*list != nullptr) {
+		p = (*list)->link;
+		free(*list);
+		*list = p;
+	}
+	return;
+
+}
+
+void DELETELINK2(LinkList *list, ElemType item) {
+
+	LinkList cur = *list;
+	LinkList pre = cur;
+	while (cur != nullptr) {
+		if (cur->data == item) {
+			pre->link = cur->link;
+			free(cur);
+			cur = pre->link;
+			continue;
+		}
+		else {
+			pre = cur;
+			cur = cur->link;
+		}
+	}
+	return;
+
+}
+
+
+void INVERT(LinkList *list) {
+
+	LinkList cur = *list;
+	LinkList pre = nullptr;
+	LinkList nex = cur;
+	while (nex != nullptr) {
+		nex = cur->link;
+		cur->link = pre;
+		pre = cur;
+		cur = nex;
+	}
+	*list = pre;
+
+}
+
+
+void CONNECT(LinkList lista, LinkList listb) {
+
+	if (lista == nullptr || listb == nullptr)
+		return;
+	LinkList ptr = nullptr;
+	ptr = lista;
+	while (ptr->link != nullptr)
+		ptr = ptr->link;
+	ptr->link = listb;
+	return;
+
+}
+
+
+LinkList MERGELIST(LinkList lista, LinkList listb) {
 
 
 }
 
 
+LinkList COPY(LinkList list) {
+
+	LinkList ptr = nullptr;
+
+}
