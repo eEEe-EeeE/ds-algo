@@ -260,12 +260,93 @@ void CONNECT(LinkList lista, LinkList listb) {
 
 LinkList MERGELIST(LinkList lista, LinkList listb) {
 
+	LinkList cura = lista, curb = listb;
+	LinkList prea = lista;
+	while (cura != nullptr) {
+		if (cura->data > curb->data) {
+			listb = curb->link;
+			if (cura == prea) {
+				lista = curb;
+				curb->link = cura;
+			}
+			else {
+				prea->link = curb;
+				curb->link = cura;
+			}
+			prea = curb;
+			curb = listb;
+			continue;
+		}
+		prea = cura;
+		cura = cura->link;
+	}
+	if (listb != nullptr) {
+		prea->link = listb;
+	}
+	return lista;
 
 }
 
 
 LinkList COPY(LinkList list) {
 
-	LinkList ptr = nullptr;
+	LinkList ptr = list;
+	LinkList head = nullptr;
+	LinkList next = list;
+	while (ptr != nullptr) {
+		next = (LinkList)malloc(sizeof(LNode));
+		if (ptr == list)
+			head = next;
+		if (next != nullptr) {
+			next->data = ptr->data;
+			next->link = ptr->link;
+		}
+		ptr = ptr->link;
+	}
+	return head;
 
 }
+
+
+void LINKSORT(ElemType group[], int len) {
+	
+	LinkList ptr = nullptr, list = nullptr;
+	int count = 0;
+	while (count < len)
+		INSERTLINK5(&list, group[count++]);
+
+	count = 0;
+	ptr = list;
+	while (ptr != nullptr) {
+		group[count++] = ptr->data;
+		ptr = ptr->link;
+	}
+
+}
+
+
+void REMOVE(LinkList *list) {
+
+	LinkList pre, cur, max, pmax;
+	pre = cur = max = pmax = *list;
+	while (cur != nullptr) {
+		if (cur->data > max->data) {
+			pmax = pre;
+			max = cur;
+		}
+		pre = cur;
+		cur = cur->link;
+	}
+
+	if (max->link != nullptr) {
+		if (max == *list)
+			*list = (*list)->link;
+		else
+			pmax->link = max->link;
+		max->link = nullptr;
+		pre->link = max;
+	}
+
+}
+
+

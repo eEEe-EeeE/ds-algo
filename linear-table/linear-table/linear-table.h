@@ -21,7 +21,7 @@ void INSERTLINK1(LinkList *list, ElemType item);
 void INSERTLINK2(LinkList list, ElemType item);
 void INSERTLINK3(LinkList *list, LinkList q, ElemType item);
 void INSERTLINK4(LinkList list, const int i, ElemType item);
-void INSERTLINK5(LinkList *list, ElemType item);//有序插入
+void INSERTLINK5(LinkList *list, ElemType item); //在按值有序的单链表中插入item结点
 void DELETELINK1(LinkList *list, LinkList q);
 void DELETELIST(LinkList *list);
 void DELETELINK2(LinkList *list, ElemType item);
@@ -29,7 +29,8 @@ void INVERT(LinkList *list);
 void CONNECT(LinkList lista, LinkList listb);
 LinkList MERGELIST(LinkList lista, LinkList listb);
 LinkList COPY(LinkList list);
-//用链表对数据排序
+void LINKSORT(ElemType group[], int len);
+void REMOVE(LinkList *list);
 
 
 #endif
