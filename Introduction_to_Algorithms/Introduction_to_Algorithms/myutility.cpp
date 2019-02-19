@@ -8,22 +8,37 @@ int myrandom(int b, int e) {
 	return dis(gen);
 }
 
-void insertsort(vector<int> & v) {
-	for (auto ptr = v.begin() + 1; ptr < v.end(); ++ptr) {
-		auto key = *ptr;
-		auto count = ptr - 1;
-		for ( ; count != v.begin() && *count > key; --count) {
-			*(count + 1) = *count;
-		}
-		if (count != v.begin())
-			*(count + 1) = key;
-		else {
-			if (*count > key) {
-				*(count + 1) = *count;
-				*count = key;
+void insertsort(vector<int> & v, bool mode) {
+	if (mode == true) {
+		for (auto cur = v.begin() + 1; cur < v.end(); ++cur) {
+			auto key = *cur;
+			auto ptr = cur - 1;
+			for (; ptr != v.begin() && *ptr > key; --ptr) {
+				*(ptr + 1) = *ptr;
+			}
+			if (ptr == v.begin() && *ptr > key) {
+				*(ptr + 1) = *ptr;
+				*ptr = key;
 			}
 			else
-				*(count + 1) = key;
+				*(ptr + 1) = key;
+		}
+	}
+	else {
+		for (auto cur = v.begin() + 1; cur != v.end(); ++cur) {
+			auto key = *cur;
+			auto ptr = cur - 1;
+			for (; ptr != v.begin() && *ptr < key; --ptr) {
+				*(ptr + 1) = *ptr;
+			}
+			if (ptr == v.begin() && *ptr < key) {
+				*(ptr + 1) = *ptr;
+				*ptr = key;
+			}
+			else
+				*(ptr + 1) = key;
 		}
 	}
 }
+
+

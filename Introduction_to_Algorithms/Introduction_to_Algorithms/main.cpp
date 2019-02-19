@@ -14,6 +14,9 @@ int main() {
 	for (auto & x : v) {
 		cout << x << endl;
 	}
-
+	insertsort(v, false);
+	for (auto & x : v) {
+		cout << x << endl;
+	}
 	system("pause");
 }

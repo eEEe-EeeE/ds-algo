@@ -5,6 +5,6 @@
 #include <vector>
 
 int myrandom(int b, int e);
-void insertsort(std::vector<int> & v);
+void insertsort(std::vector<int> & v, bool mode = true);
 
 #endif
