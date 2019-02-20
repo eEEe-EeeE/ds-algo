@@ -1,4 +1,5 @@
 #include "myutility.h"
+#include <limits>
 using namespace std;
 
 int myrandom(int b, int e) {
@@ -42,3 +43,25 @@ void insertsort(vector<int> & v, bool mode) {
 }
 
 
+void selectsort(vector<int> & v) {
+	auto i = 0;
+	auto min = 0;
+	while (i != v.size()) {
+		auto min = i;
+		for (auto j = i + 1; j != v.size(); ++j) {
+			if (v[min] > v[j])
+				min = j;
+		}
+		if (min != i) {
+			auto temp = v[i];
+			v[i] = v[min];
+			v[min] = temp;
+		}
+		++i;
+	}
+}
+
+
+void mergesort(vector<int> & v, int p, int r) {
+	numeric_limits<int>::max();
+}
