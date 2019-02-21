@@ -5,8 +5,10 @@
 #include <vector>
 
 int myrandom(int b, int e);
-void insertsort(std::vector<int> & v, bool mode = true);
+void insertsort1(std::vector<int> & v, bool mode = true);
+void insertsort2(std::vector<int> & v);
 void selectsort(std::vector<int> & v);
 void mergesort(std::vector<int> & v, int p, int r);
+int binarysearch1(std::vector<int> & v, int p, int r, int num);
 
 #endif
