@@ -165,3 +165,24 @@ int binarysearch1(vector<int> & v, int p, int r, int num) {
 	if (p > r)
 		return -1;
 }
+
+vector<int> maxsubarray1(const vector<int> & v) {
+	auto begin = 0;
+	auto end = 1;
+	auto max = 0;
+	vector<int> res(2);
+	while (begin != v.size() - 1) {
+		while (end != v.size()) {
+			if (v[end] - v[begin] > max) {
+				max = v[end] - v[begin];
+				res[0] = begin;
+				res[1] = end;
+			}
+			++end;
+		}
+		++begin;
+		end = begin + 1;
+	}
+	return res;
+}
+
