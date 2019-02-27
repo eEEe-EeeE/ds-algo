@@ -162,7 +162,7 @@ int binarysearch1(vector<int> & v, int p, int r, int num) {
 		else
 			return binarysearch1(v, q + 1, r, num);
 	}
-	if (p > r)
+	else
 		return -1;
 }
 
@@ -186,3 +186,51 @@ vector<int> maxsubarray1(const vector<int> & v) {
 	return res;
 }
 
+//最大子数组
+MaxSubarray findmaxcrossing(const vector<int> & v, int p, int q, int r) {
+	int left_sum = numeric_limits<int>::min();
+	int left_max = q;
+	int sum = 0;
+	for (int i = q; i >= 0; --i) {
+		sum += v[i];
+		if (sum > left_sum) {
+			left_sum = sum;
+			left_max = i;
+		}
+	}
+	int right_sum = numeric_limits<int>::min();
+	int right_max = q;
+	sum = 0;
+	for (int j = q + 1; j < v.size(); ++j) {
+		sum += v[j];
+		if (sum > right_sum) {
+			right_sum = sum;
+			right_max = j;
+		}
+	}
+	MaxSubarray arr(left_max, right_max, left_sum + right_sum);
+	return arr;
+}
+
+MaxSubarray findmaximumsubarray(const vector<int> & v, int p, int r) {
+	if (p == r) {
+		MaxSubarray arr(p, r, v[p]);
+		return arr;
+	}
+	else {
+		MaxSubarray left, mid, right;
+		int q = (p + r) / 2;
+		left = findmaximumsubarray(v, p, q);
+		mid = findmaxcrossing(v, p, q, r);
+		right = findmaximumsubarray(v, q + 1, r);
+		if (left.getSum() > right.getSum() && left.getSum() > mid.getSum())
+			return left;
+		else if (right.getSum() > left.getSum() && right.getSum() > mid.getSum())
+			return right;
+		else
+			return mid;
+	}
+}
+
+//矩阵乘法
+Matrix
