@@ -23,7 +23,9 @@ int main() {
 	//cout << endl;
 	//MaxSubarray arr = findmaximumsubarray(diff, 0, diff.size() - 1);
 	//cout << arr.getLeft() << ", " << arr.getRight() << ", " << arr.getSum() << endl;
-	
+	int n = 5;
+	int * p = new int[n] {};
+	cout << p[4] << endl;
 
 	system("pause");
 }

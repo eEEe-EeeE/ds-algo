@@ -233,4 +233,12 @@ MaxSubarray findmaximumsubarray(const vector<int> & v, int p, int r) {
 }
 
 //æÿ’Û≥À∑®
-Matrix
+Matrix Matrix::operator * (const Matrix & m) {
+	if (nColumns != m.nRows)
+		exit(1);
+	Matrix c(nRows, m.nColumns);
+	for (int i = 0; i < nRows; ++i)
+		for (int j = 0; j < m.nColumns; ++j)
+			for (int k = 0; k < nColumns; ++k)
+				c[i * nColumns + j] += lpBuf[]
+}

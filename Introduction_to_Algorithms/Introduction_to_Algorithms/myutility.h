@@ -42,10 +42,16 @@ private:
 public:
 	Matrix()
 		:nRows(0), nColumns(0), lpBuf(nullptr) {}
-	Matrix(int r, int c)
+	Matrix(const int r, const int c)
 		:nRows(r), nColumns(c) {
-
+		lpBuf = new int[r * c]{};
 	}
+	~Matrix() {
+		if (lpBuf != nullptr)
+			delete[] lpBuf;
+	}
+	Matrix operator [] (int n) {};
+	Matrix operator * (const Matrix & m);
 };
 
 int myrandom(int b, int e);
