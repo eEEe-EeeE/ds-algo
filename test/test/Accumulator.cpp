@@ -2,13 +2,27 @@
 
 
 
-Accumulator::Accumulator() :
-	lastDate(Date(1,1,1))
+Accumulator::Accumulator(const Date & dat, const double & val) :
+	lastDate(dat), value(val)
 {
-
 }
-
 
 Accumulator::~Accumulator()
 {
+}
+
+double Accumulator::getSum(const Date & dat) const {
+	return sum + value * dat.distance(lastDate);
+}
+
+void Accumulator::change(const Date & dat, const double & val) {
+	sum += value * dat.distance(lastDate);
+	value = val;
+	lastDate = dat;
+}
+
+void Accumulator::reset(const Date & dat, const double & val) {
+	sum = 0;
+	value = val;
+	lastDate = dat;
 }
