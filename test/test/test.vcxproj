@@ -115,10 +115,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
+    <ClInclude Include="Accumulator.h" />
+    <ClInclude Include="CreditAccount.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="SavingsAccount.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Accumulator.cpp" />
+    <ClCompile Include="CreditAccount.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SavingsAccount.cpp" />

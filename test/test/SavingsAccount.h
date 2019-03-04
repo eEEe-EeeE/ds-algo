@@ -4,8 +4,11 @@
 #include <iostream>
 #include <string>
 #include "Date.h"
+#include "Account.h"
 
-class SavingsAccount {
+class SavingsAccount :
+	public Account
+{
 private:
 	std::string id;
 	double balance;
