@@ -7,6 +7,7 @@ private:
 	double balance;
 	static double total;
 protected:
+	Account() {};
 	Account(Date dat, std::string id);
 	void record(Date dat, double amount, std::string desc);
 	void error(std::string msg) const;

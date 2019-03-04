@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Date" Collapsed="true">
-    <Position X="4.75" Y="2" Width="1.5" />
+  <Class Name="Date">
+    <Position X="11.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAkAAAAIAAAAAAAEBAgQAAAAEQAAAABBAAAAAQAAAA=</HashCode>
       <FileName>Date.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SavingsAccount" Collapsed="true">
-    <Position X="7.5" Y="2" Width="1.5" />
+  <Class Name="SavingsAccount">
+    <Position X="4.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAEAEAAAABEgAgAAAEAAAAIAAAABEAABEACQgAAAgQ=</HashCode>
       <FileName>SavingsAccount.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CreditAccount" Collapsed="true">
-    <Position X="10.5" Y="2" Width="1.5" />
+  <Class Name="CreditAccount">
+    <Position X="7" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAQEAAAAABAAAAAgAAIQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CreditAccount.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Accumulator" Collapsed="true">
-    <Position X="6.25" Y="4.25" Width="1.5" />
+  <Class Name="Accumulator">
+    <Position X="9.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQABEAEAAAAAAgAAAAAAAAAAAAAACAEAAAAQAAAAAA=</HashCode>
       <FileName>Accumulator.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Account" Collapsed="true">
-    <Position X="9.5" Y="5.75" Width="1.5" />
+    <Position X="6" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAEAAAAAAAAAAAAAAECAAAIAAAAAAAABEACAAAAAkQ=</HashCode>
       <FileName>Account.h</FileName>
