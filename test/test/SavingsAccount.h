@@ -11,7 +11,7 @@ private:
 	double rate;
 	Accumulator acc;
 public:
-	SavingsAccount();
+	SavingsAccount(const Date & dat, const std::string & id, const double & rate);
 	~SavingsAccount();
 	double getRate() const { return rate; }
 	void deposit(const Date & dat, const double	& amount, const std::string & desc);

@@ -16,7 +16,7 @@ double Accumulator::getSum(const Date & dat) const {
 }
 
 void Accumulator::change(const Date & dat, const double & val) {
-	sum += value * dat.distance(lastDate);
+	sum = getSum(dat);
 	value = val;
 	lastDate = dat;
 }

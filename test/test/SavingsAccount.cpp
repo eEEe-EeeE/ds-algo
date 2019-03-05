@@ -4,56 +4,31 @@ using namespace std;
 
 double SavingsAccount::total = 0;
 
-void SavingsAccount::record(const Date & date, double amount, const string & desc) {
-	accumulation = accumulate(date);
-	lastDate = date;
-	amount = round(amount * 100) / 100;
-	balance += amount;
-	total += amount;
-	date.show();
-	cout << "\t#" << id << "\t" << amount << "\t" << balance << "\t" << desc << endl;
+SavingsAccount::SavingsAccount(const Date & dat, const string & id, const double & rate) :
+	Account(dat, id), rate(rate), acc(dat, 0)
+{}
+
+SavingsAccount::~SavingsAccount()
+{}
+
+void SavingsAccount::deposit(const Date & dat, const double & amount, const string & desc) {
+	record(dat, amount, desc);
 }
 
-double SavingsAccount::accumulate(const Date & date) {
-	return accumulation + balance * date.distance(lastDate);
-}
-
-void SavingsAccount::show() const {
-	cout << id << "\tBalance: " << balance;
-}
-
-void SavingsAccount::error(const string & err) const {
-	cout << "Error(#" << id << "): " << err << endl;
-}
-
-//´æÇ®
-void SavingsAccount::deposit(const Date & date, double amount, const string & desc) {
-	if (amount <= 0) {
-		cout << "Amount must be positive." << endl;
-		return;
+void SavingsAccount::withdraw(const Date & dat, const double & amount, const string & desc) {
+	if (amount <= getBalance()) {
+		record(dat, -amount, desc);
+		acc.change(dat, getBalance());
 	}
-	record(date, amount, desc);
+	else
+		error("Sorry, your credit is running low.");
 }
 
-//È¡Ç®
-void SavingsAccount::withdraw(const Date & date, double amount, const string & desc) {
-	if (balance <= 0) {
-		cout << "Not enough money." << endl;
-		return;
+void SavingsAccount::settle(const Date & dat) {
+	double interest;
+	interest = acc.getSum(dat) / dat.distance(Date(dat.getYear() - 1, 1, 1)) * getRate();
+	if (interest != 0) {
+		record(dat, interest, "interest");
+		acc.reset(dat, getBalance());
 	}
-	record(date, -amount, desc);
 }
-
-
-void SavingsAccount::settle(const Date & date) {
-	double interest = accumulate(date) * rate / date.distance(Date(date.getYear() - 1, date.getMonth(), date.getDay()));
-	interest = round(interest * 100) / 100;
-	if (interest != 0)
-		record(date, interest, "interest");
-	accumulation = 0;
-}
-
-
-
-
-

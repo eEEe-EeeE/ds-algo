@@ -14,18 +14,23 @@ CreditAccount::~CreditAccount()
 
 void CreditAccount::deposit(const Date & dat, const double & amount, const string & desc) {
 	record(dat, amount, desc);
-	acc.change(dat, amount);
+	acc.change(dat, getBalance());
 }
 
 void CreditAccount::withdraw(const Date & dat, const double & amount, const string & desc) {
-	if (amount <= getBalance()) {
+	if (amount <= getAvailableCredit()) {
 		record(dat, -amount, desc);
-		acc.change(dat, amount);
+		acc.change(dat, getBalance());
 	}
 	else
 		error("Sorry, your credit is running low.");
 }
 
 void CreditAccount::settle(const Date & dat) {
-	
+	double interest;
+	interest = acc.getSum(dat) / dat.distance(Date(dat.getYear(), dat.getMonth() - 1, 1)) * getRate();
+	if (interest != 0) {
+		record(dat, interest, "interest");
+		acc.reset(dat, getBalance());
+	}
 }

@@ -16,11 +16,15 @@ public:
 	~CreditAccount();
 	double getDebt() const { return acc.getValue(); }
 	double getCredit() const { return credit; }
-	double getAvailable() const { return getCredit() - getDebt(); }
+	double getAvailableCredit() const { return getCredit() - getDebt(); }
 	double getRate() const { return rate; }
 	double getFee() const { return fee; }
 	void deposit(const Date & dat, const double & amount, const std::string & desc);
 	void withdraw(const Date & dat, const double & amount, const std::string & desc);
 	void settle(const Date & dat);
+	void show() const {
+		show();
+		std::cout << "\t#Credit: " << getCredit();
+	}
 };
 
