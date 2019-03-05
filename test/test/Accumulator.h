@@ -12,6 +12,7 @@ private:
 public:
 	Accumulator(const Date & dat, const double & val);
 	~Accumulator();
+	double getValue() const { return value; }
 	double getSum(const Date & dat) const;
 	void change(const Date & dat, const double & val);
 	void reset(const Date & dat, const double & val);

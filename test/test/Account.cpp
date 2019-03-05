@@ -8,7 +8,8 @@ double Account::total = 0;
 Account::Account(const Date & dat, const std::string & id) :
 	id(id), balance(0)
 {
-	cout << "id : " << id << "The account is created.";
+	dat.show();
+	cout << "\t#id : " << id << "The account is created.";
 }
 
 Account::~Account()

@@ -12,15 +12,15 @@ private:
 	double fee;
 	Accumulator acc;
 public:
-	CreditAccount();
+	CreditAccount(const Date & dat, const std::string & id, const double & cred, const double & rate, const double & fee);
 	~CreditAccount();
+	double getDebt() const { return acc.getValue(); }
 	double getCredit() const { return credit; }
-	void getAvailable() const { return; }
-	void getDebt() const {}
+	double getAvailable() const { return getCredit() - getDebt(); }
 	double getRate() const { return rate; }
 	double getFee() const { return fee; }
-	void deposit(const Date & dat, const double & amount, std::string desc);
-	void withdraw(const Date & dat, const double & amount, std::string desc);
+	void deposit(const Date & dat, const double & amount, const std::string & desc);
+	void withdraw(const Date & dat, const double & amount, const std::string & desc);
 	void settle(const Date & dat);
 };
 
