@@ -2,8 +2,6 @@
 
 using namespace std;
 
-double SavingsAccount::total = 0;
-
 SavingsAccount::SavingsAccount(const Date & dat, const string & id, const double & rate) :
 	Account(dat, id), rate(rate), acc(dat, 0)
 {}
@@ -13,6 +11,7 @@ SavingsAccount::~SavingsAccount()
 
 void SavingsAccount::deposit(const Date & dat, const double & amount, const string & desc) {
 	record(dat, amount, desc);
+	acc.change(dat, getBalance());
 }
 
 void SavingsAccount::withdraw(const Date & dat, const double & amount, const string & desc) {

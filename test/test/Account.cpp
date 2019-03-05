@@ -9,7 +9,7 @@ Account::Account(const Date & dat, const std::string & id) :
 	id(id), balance(0)
 {
 	dat.show();
-	cout << "\t#id : " << id << "The account is created.";
+	cout << "\t#id: " << id << "\tThe account is created." << endl;
 }
 
 Account::~Account()
@@ -24,11 +24,12 @@ void Account::record(const Date & dat, const double & amount, const string & des
 	//所有账户总余额
 	total += amount_round;
 	//打印余额变化
-	cout << "\t#" << id << "\t" << amount_round << "\tbalance: " << balance << "\t" << desc;
+	dat.show();
+	cout << "\t#" << id << "\t" << amount_round << "\tbalance: " << balance << "\t" << desc << endl;
 }
 
 void Account::error(const string & msg) const {
-	cout << msg;
+	cout << msg << endl;
 }
 
 void Account::show() const {

@@ -3,7 +3,7 @@
 
 
 Accumulator::Accumulator(const Date & dat, const double & val) :
-	lastDate(dat), value(val)
+	lastDate(dat), value(val), sum(0)
 {
 }
 
