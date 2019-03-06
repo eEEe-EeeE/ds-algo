@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="Accumulator.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="Complex.h" />
     <ClInclude Include="CreditAccount.h" />
     <ClInclude Include="Date.h" />
@@ -125,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Accumulator.cpp" />
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Complex.cpp" />
     <ClCompile Include="CreditAccount.cpp" />
     <ClCompile Include="Date.cpp" />
