@@ -24,15 +24,10 @@ void SavingsAccount::withdraw(const Date & dat, const double & amount, const str
 }
 
 void SavingsAccount::settle(const Date & dat) {
-	if (dat.getMonth() != 1 || dat.getDay() != 1) {
-		error("Error in settlement date.");
-	}
-	else {
-		double interest;
-		interest = acc.getSum(dat) / dat.distance(Date(dat.getYear() - 1, 1, 1)) * getRate();
-		if (interest != 0) {
-			record(dat, interest, "interest");
-			acc.reset(dat, getBalance());
-		}
+	double interest;
+	interest = acc.getSum(dat) / dat.distance(Date(dat.getYear() - 1, 1, 1)) * getRate();
+	if (interest != 0) {
+		record(dat, interest, "interest");
+		acc.reset(dat, getBalance());
 	}
 }

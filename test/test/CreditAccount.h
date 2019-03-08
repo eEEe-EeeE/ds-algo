@@ -22,7 +22,7 @@ public:
 	void deposit(const Date & dat, const double & amount, const std::string & desc);
 	void withdraw(const Date & dat, const double & amount, const std::string & desc);
 	void settle(const Date & dat);
-	virtual void show() const override {
+	void show() const {
 		show();
 		std::cout << "\t#Credit: " << getCredit();
 	}

@@ -18,9 +18,7 @@ public:
 	std::string getId() const { return id; }
 	double getBalance() const { return balance; }
 	static double getTotal() { return total; }
-	virtual void show() const;
-	virtual void deposit(const Date & dat, const double & amount, const std::string & desc) = 0;
-	virtual void withdraw(const Date & dat, const double & amount, const std::string & desc) = 0;
-	virtual void settle(const Date & dat) = 0;
+	void show() const;
+
 };
 
