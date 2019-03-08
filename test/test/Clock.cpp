@@ -4,7 +4,7 @@ using namespace std;
 
 Clock::Clock(const int & hour, const int & minute, const int & second)
 {
-	if (0 <= hour <= 23 && 0 <= minute <= 59 && 0 <= second <= 60) {
+	if ((0 <= hour && hour <= 23) && (0 <= minute && minute <= 59) && (0 <= second && second <= 60)) {
 		this->hour = hour;
 		this->minute = minute;
 		this->second = second;
