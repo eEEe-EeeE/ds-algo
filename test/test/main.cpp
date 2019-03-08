@@ -73,7 +73,7 @@ int main() {
 			getline(cin, desc);
 			break;
 		case 's':
-			cout <<
+			break;
 		}
 	} while (true);
 
