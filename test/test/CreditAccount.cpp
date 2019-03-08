@@ -27,10 +27,15 @@ void CreditAccount::withdraw(const Date & dat, const double & amount, const stri
 }
 
 void CreditAccount::settle(const Date & dat) {
-	double interest;
-	interest = acc.getSum(dat) / dat.distance(Date(dat.getYear(), dat.getMonth() - 1, 1)) * getRate();
-	if (interest != 0) {
-		record(dat, interest, "interest");
-		acc.reset(dat, getBalance());
+	if (dat.getDay() != 1) {
+		error("Error in settlement date.");
+	}
+	else {
+		double interest;
+		interest = acc.getSum(dat) / dat.distance(Date(dat.getYear(), dat.getMonth() - 1, 1)) * getRate();
+		if (interest != 0) {
+			record(dat, interest, "interest");
+			acc.reset(dat, getBalance());
+		}
 	}
 }

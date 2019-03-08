@@ -3,6 +3,7 @@
 #include <vector>
 #include <Windows.h>
 #include "SavingsAccount.h"
+#include "CreditAccount.h"
 #include "Complex.h"
 #include "Clock.h"
 using namespace std;
@@ -31,36 +32,53 @@ void fun(Base1 *ptr) {  //参数为指向基类对象的指针
 
 int main() {
 
-	//Date date(2008, 11, 1);	//起始日期
-	////建立几个账户
-	//SavingsAccount accounts[] = {
-	//	SavingsAccount(date, "S3755217", 0.015),
-	//	SavingsAccount(date, "02342342", 0.015)
-	//};
-	//const int n = sizeof(accounts) / sizeof(SavingsAccount); //账户总数
-	////11月份的几笔账目
-	//accounts[0].deposit(Date(2008, 11, 5), 5000, "salary");
-	//accounts[1].deposit(Date(2008, 11, 25), 10000, "sell stock 0323");
-	////12月份的几笔账目
-	//accounts[0].deposit(Date(2008, 12, 5), 5500, "salary");
-	//accounts[1].withdraw(Date(2008, 12, 20), 4000, "buy a laptop");
+	Date date(2008, 11, 1); //起始日期
+	//创建几个账户
+	SavingsAccount sa1(date, "S2755217", 0.015);
+	SavingsAccount sa2(date, "02342342", 0.015);
+	CreditAccount cr1(date, "C5392394", 10000, 0.015, 50);
+	Account * account[] = { &sa1, &sa2, &cr1 };
+	const int n = sizeof(account) / sizeof(Account *);
 
-	////结算所有账户并输出各个账户信息
-	//cout << endl;
-	//for (int i = 0; i < n; i++) {
-	//	accounts[i].settle(Date(2009, 1, 1));
-	//	accounts[i].show();
-	//	cout << endl;
-	//}
-	//cout << "Total: " << SavingsAccount::getTotal() << endl;
-	
-	Base1 base1;    //声明Base1类对象
-	Base2 base2;    //声明Base2类对象
-	Derived derived;    //声明Derived类对象
+	cout << "(d)deposit, (w)withdraw, (s)show, (c)change day, (n)next month, (e)exit" << endl;
 
-	fun(&base1);    //用Base1对象的指针调用fun函数
-	fun(&base2);    //用Base2对象的指针调用fun函数
-	fun(&derived);     //用Derived对象的指针调用fun函数
+	char cmd = 0;
+	do {
+		cout << "date: ";
+		date.show();
+		cout << "\tTotal: " << Account::getTotal() << endl;
+		cout << "command>";
+		int index, day;
+		double amount;
+		string desc;
+
+		cin >> cmd;
+		switch (cmd) {
+		case 'd': //存入现金
+			cout << "account number: ";
+			cin >> index;
+			cout << endl << "deposit amount: ";
+			cin >> amount;
+			cout << endl << "remarks: ";
+			getline(cin, desc);
+			account[index]->deposit(date, amount, desc);
+			break;
+		case 'w': //取出现金
+			cout << "account number: ";
+			cin >> index;
+			cout << endl << "withdraw amount: ";
+			cin >> amount;
+			cout << endl << "remarks: ";
+			account[index]->withdraw(date, amount, desc);
+			getline(cin, desc);
+			break;
+		case 's':
+			cout <<
+		}
+	} while (true);
+
+
+
 
 	system("pause");
 }
