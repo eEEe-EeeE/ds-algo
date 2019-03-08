@@ -25,7 +25,7 @@ void Account::record(const Date & dat, const double & amount, const string & des
 	total += amount_round;
 	//¥Ú”°”‡∂Ó±‰ªØ
 	dat.show();
-	cout << "\t#" << id << "\t" << amount_round << "\tbalance: " << balance << "\t" << desc << endl;
+	cout << "\t#" << id << "\tchange: " << amount_round << "\tbalance: " << balance << "\tlog: " << desc << endl;
 }
 
 void Account::error(const string & msg) const {

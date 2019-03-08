@@ -32,7 +32,9 @@ void CreditAccount::settle(const Date & dat) {
 	}
 	else {
 		double interest;
-		interest = acc.getSum(dat) / dat.distance(Date(dat.getYear(), dat.getMonth() - 1, 1)) * getRate();
+		int month = dat.getMonth() - 1;
+		month = month ? month : 12;
+		interest = acc.getSum(dat) / (dat - Date(dat.getYear(), month, 1)) * getRate();
 		if (interest != 0) {
 			record(dat, interest, "interest");
 			acc.reset(dat, getBalance());

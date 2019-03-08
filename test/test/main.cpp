@@ -30,6 +30,9 @@ void fun(Base1 *ptr) {  //参数为指向基类对象的指针
 	ptr->display();     //"对象指针->成员名"
 }
 
+
+int startUp(Date & date, Account * account[], const int & n);
+
 int main() {
 
 	Date date(2008, 11, 1); //起始日期
@@ -40,13 +43,20 @@ int main() {
 	Account * account[] = { &sa1, &sa2, &cr1 };
 	const int n = sizeof(account) / sizeof(Account *);
 
-	cout << "(d)deposit, (w)withdraw, (s)show, (c)change day, (n)next month, (e)exit" << endl;
+	startUp(date, account, n);
+
+	system("pause");
+}
+
+
+int startUp(Date & date, Account * account[], const int & n) {
 
 	char cmd = 0;
 	do {
 		cout << "date: ";
 		date.show();
 		cout << "\tTotal: " << Account::getTotal() << endl;
+		cout << "(d)deposit, (w)withdraw, (s)show, (c)change day, (n)next month, (e)exit" << endl;
 		cout << "command>";
 		int index, day;
 		double amount;
@@ -57,28 +67,64 @@ int main() {
 		case 'd': //存入现金
 			cout << "account number: ";
 			cin >> index;
-			cout << endl << "deposit amount: ";
+			if (index < 0 || index > n - 1) {
+				cout << "Transboundary." << endl;
+				break;
+			}
+			cout << "deposit amount: ";
 			cin >> amount;
-			cout << endl << "remarks: ";
+			cout << "remarks: ";
 			getline(cin, desc);
+			getline(cin, desc); //默认以\n为终止符，读入的字符串不包括终止符
 			account[index]->deposit(date, amount, desc);
 			break;
 		case 'w': //取出现金
 			cout << "account number: ";
 			cin >> index;
-			cout << endl << "withdraw amount: ";
+			if (index < 0 || index > n - 1) {
+				cout << "Transboundary." << endl;
+				break;
+			}
+			cout << "withdraw amount: ";
 			cin >> amount;
-			cout << endl << "remarks: ";
-			account[index]->withdraw(date, amount, desc);
+			cout << "remarks: ";
 			getline(cin, desc);
+			getline(cin, desc); //默认以\n为终止符，读入的字符串不包括终止符
+			account[index]->withdraw(date, amount, desc);
 			break;
 		case 's':
+			for (int i = 0; i < n; ++i) {
+				cout << '[' << i << ']';
+				date.show();
+				cout << '\t';
+				account[index]->show();
+				cout << endl;
+			}
+			break;
+		case 'c':
+			cout << "day = ";
+			cin >> day;
+			if (1 <= day && day <= date.getMaxDay()) {
+				date = Date(date.getYear(), date.getMonth(), day);
+			}
+			else {
+				cout << "illegal date." << endl;
+			}
+			break;
+		case 'n':
+			if (date.getMonth() == 12) {
+				date = Date(date.getYear() + 1, 1, 1);
+			}
+			else {
+				date = Date(date.getYear(), date.getMonth() + 1, 1);
+			}
+			for (int i = 0; i < n; ++i)
+				account[i]->settle(date);
+			break;
+		default:
 			break;
 		}
-	} while (true);
-
-
-
-
-	system("pause");
+		cout << endl;
+	} while (cmd != 'e');
+	return 0;
 }

@@ -24,7 +24,7 @@ public:
 	void settle(const Date & dat);
 	virtual void show() const override {
 		show();
-		std::cout << "\t#Credit: " << getCredit();
+		std::cout << "\tCredit: " << getCredit() << "\tAvailableCredit: " << getAvailableCredit();
 	}
 };
 

@@ -12,16 +12,15 @@ private:
 
 public:
 	Date(int year, int month, int day);
+	~Date();
+
+	int operator - (const Date & rth) const;
+
 	int getYear() const { return year; }
 	int getMonth() const { return month; }
 	int getDay() const { return day; }
 	int getMaxDay() const;
-	bool isLeapYear() const {
-		return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
-	}
-	int distance(const Date & date) const {
-		return totalDays - date.totalDays;
-	}
+	bool isLeapYear() const;
 	void show() const;
 };
 

@@ -23,11 +23,23 @@ Date::Date(int year, int month, int day)
 		++totalDays;
 }
 
+Date::~Date()
+{
+}
+
+int Date::operator - (const Date & rth) const {
+	return totalDays - rth.totalDays;
+}
+
 int Date::getMaxDay() const {
 	if (isLeapYear() && month == 2)
 		return 29;
 	else
 		return DAYS_BEFORE_MONTH[month] - DAYS_BEFORE_MONTH[month - 1];
+}
+
+bool Date::isLeapYear() const {
+	return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 }
 
 void Date::show() const {
