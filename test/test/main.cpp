@@ -6,44 +6,31 @@
 #include "CreditAccount.h"
 #include "Complex.h"
 #include "Clock.h"
+#include "Array.h"
+
 using namespace std;
 
-class Base1 { //基类Base1定义
-public:
-	virtual void display() const {
-		cout << "Base1::display()" << endl;
-	}
-};
-class Base2 : public Base1 { //公有派生类Base2定义
-public:
-	virtual void display() const {
-		cout << "Base2::display()" << endl;
-	}
-};
-class Derived : public Base2 { //公有派生类Derived定义
-public:
-	virtual void display() const {
-		cout << "Derived::display()" << endl;
-	}
-};
-void fun(Base1 *ptr) {  //参数为指向基类对象的指针
-	ptr->display();     //"对象指针->成员名"
+void read(int *p, int n) {
+	for (int i = 0; i < n; i++)
+		cin >> p[i];
 }
-
 
 int startUp(Date & date, Account * account[], const int & n);
 
 int main() {
 
-	Date date(2008, 11, 1); //起始日期
-	//创建几个账户
-	SavingsAccount sa1(date, "S2755217", 0.015);
-	SavingsAccount sa2(date, "02342342", 0.015);
-	CreditAccount cr1(date, "C5392394", 10000, 0.015, 50);
-	Account * account[] = { &sa1, &sa2, &cr1 };
-	const int n = sizeof(account) / sizeof(Account *);
+	//Date date(2008, 11, 1); //起始日期
+	////创建几个账户
+	//SavingsAccount sa1(date, "S2755217", 0.015);
+	//SavingsAccount sa2(date, "02342342", 0.015);
+	//CreditAccount cr1(date, "C5392394", 10000, 0.015, 50);
+	//Account * account[] = { &sa1, &sa2, &cr1 };
+	//const int n = sizeof(account) / sizeof(Account *);
 
-	startUp(date, account, n);
+	//startUp(date, account, n);
+
+	Array<int> a(10);
+	read(a, 10);
 
 	system("pause");
 }
