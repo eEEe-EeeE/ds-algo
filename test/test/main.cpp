@@ -15,6 +15,7 @@ void read(int *p, int n) {
 		cin >> p[i];
 }
 
+void printPrime(const int & n);
 int startUp(Date & date, Account * account[], const int & n);
 
 int main() {
@@ -30,9 +31,32 @@ int main() {
 	//startUp(date, account, n);
 
 	Array<int> a(10);
-	read(a, 10);
+	printPrime(10);
 
 	system("pause");
+}
+
+void printPrime(const int & n) {
+	Array<int> arr(0);
+	bool isPrime = true;
+	int count = 0;
+	for (auto num = 2; num <= n; ++num) {
+		isPrime = true;
+		for (auto j = 0; j < count; ++j) {
+			if (num % arr[j] == 0) {
+				isPrime = false;
+				break;
+			}
+		}
+		if (isPrime) {
+			if (count == arr.getSize())
+				arr.reSize(arr.getSize() * 2);
+			arr[count++] = num;
+		}
+	}
+	for (auto i = 0; i < arr.getSize(); ++i)
+		cout << arr[i] << " ";
+	cout << endl;
 }
 
 
