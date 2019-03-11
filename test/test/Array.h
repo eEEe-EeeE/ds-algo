@@ -62,13 +62,13 @@ Array<T> & Array<T>::operator = (const Array<T> & arr) {
 
 template <class T>
 T & Array<T>::operator [] (const int & n) {
-	assert(size > 0 && 0 <= n && n <= size);
+	assert(size > 0 && 0 <= n && n < size);
 	return list[n];
 }
 
 template <class T>
 const T & Array<T>::operator [] (const int & n) const {
-	assert(size > 0 && 0 <= n && n <= size);
+	assert(size > 0 && 0 <= n && n < size);
 	return list[n];
 }
 

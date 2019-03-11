@@ -30,8 +30,11 @@ int main() {
 
 	//startUp(date, account, n);
 
-	Array<int> a(10);
-	printPrime(10);
+	/*Array<int> a(10);
+	printPrime(10);*/
+	int x = 1;
+	const int * p1;
+	
 
 	system("pause");
 }
@@ -50,7 +53,7 @@ void printPrime(const int & n) {
 		}
 		if (isPrime) {
 			if (count == arr.getSize())
-				arr.reSize(arr.getSize() * 2);
+				arr.reSize(arr.getSize() * 2 + 1);
 			arr[count++] = num;
 		}
 	}
