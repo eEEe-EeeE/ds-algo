@@ -7,13 +7,10 @@
 #include "Complex.h"
 #include "Clock.h"
 #include "Array.h"
+#include "LinkedList.h"
 
 using namespace std;
 
-void read(int *p, int n) {
-	for (int i = 0; i < n; i++)
-		cin >> p[i];
-}
 
 void printPrime(const int & n);
 int startUp(Date & date, Account * account[], const int & n);
@@ -32,9 +29,8 @@ int main() {
 
 	/*Array<int> a(10);
 	printPrime(10);*/
-	int x = 1;
-	const int * p1;
-	
+
+	LinkedList<int> list;
 
 	system("pause");
 }
