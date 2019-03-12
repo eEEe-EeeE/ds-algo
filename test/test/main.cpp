@@ -30,7 +30,6 @@ int main() {
 	/*Array<int> a(10);
 	printPrime(10);*/
 
-	LinkedList<int> list;
 
 	system("pause");
 }
