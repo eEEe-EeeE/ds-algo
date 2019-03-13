@@ -25,9 +25,9 @@ void Node<T>::insertAfter(Node<T> * newNode) {
 //在当前结点之后删除一个结点
 template <class T>
 Node<T> * Node<T>::deleteAfter() {
-	Node<T> * oldNode = next;
+	Node<T> * old_Node = next;
 	next = next->next;
-	return oldNode;
+	return old_Node;
 }
 //当前结点的下一个结点
 template <class T>
