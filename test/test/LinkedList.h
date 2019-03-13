@@ -229,5 +229,7 @@ void LinkedList<T>::deleteFooter() {
 //
 template <class T>
 void LinkedList<T>::deleteCurr() {
+	if (!isEmpty()) {
 
+	}
 }
