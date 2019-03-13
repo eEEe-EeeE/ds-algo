@@ -25,7 +25,7 @@ public:
 	LinkedList & operator = (const LinkedList & list);
 
 	int getSize() const { return size; }
-	bool isEmpty() const { return size ? true : false; }
+	bool isEmpty() const { return size ? false : true; }
 	bool isHeader() const { return prevPtr == nullptr ? true : false; } //包括空
 	bool isEnd() const { return currPtr == nullptr ? true : false; } //尾后，包括空
 	int getPosition() const { return position; }
@@ -49,9 +49,7 @@ public:
 //新建一个结点
 template <class T>
 Node<T> * LinkedList<T>::newNode(const T & item, Node<T> * ptrNext) {
-	Node<T> * new_node = new Node<T>;
-	new_node->data = item;
-	new_node->next = ptrNext;
+	Node<T> * new_node = new Node<T>(item, ptrNext);
 	return new_node;
 }
 //释放一个结点
@@ -110,7 +108,7 @@ template <class T>
 void LinkedList<T>::next() {
 	if (prevPtr != footer) {
 		prevPtr = currPtr;
-		currPtr = currPtr->next;
+		currPtr = currPtr->nextNode();
 		++position;
 	}
 	else
@@ -125,7 +123,7 @@ void LinkedList<T>::reset(const int & pos) {
 			if (n >= 0) {
 				for (auto i = 0; i < n; ++i) {
 					prevPtr = currPtr;
-					currPtr = currPtr->next;
+					currPtr = currPtr->nextNode();
 					++position;
 				}
 			}
@@ -135,7 +133,7 @@ void LinkedList<T>::reset(const int & pos) {
 				position = 0;
 				for (auto i = 0; i < pos; ++i) {
 					prevPtr = currPtr;
-					currPtr = currPtr->next;
+					currPtr = currPtr->nextNode();
 					++position;
 				}
 			}
@@ -149,7 +147,7 @@ void LinkedList<T>::clear() {
 	Node<T> * nextNode;
 	reset();
 	while (!isEnd()) {
-		nextNode = currPtr->next;
+		nextNode = currPtr->nextNode();
 		freeNode(currPtr);
 		currPtr = nextNode;
 	}
@@ -169,7 +167,7 @@ void LinkedList<T>::insertHeader(const T & item) {
 
 //表尾插入结点
 template <class T>
-void LinkedList<T>::insertAfter(const T & item) {
+void LinkedList<T>::insertFooter(const T & item) {
 	reset(size);
 	insertBefore(item);
 }
@@ -179,32 +177,32 @@ template <class T>
 void LinkedList<T>::insertBefore(const T & item) {
 	Node<T> * new_node = newNode(item, currPtr);
 	if (isHeader()) {
-			header = new_node;
-			if (isEmpty()) {
-				footer = new_node;
-				++position;
-			}
+		header = new_node;
+		if (isEmpty()) {
+			footer = new_node;
+			++position;
 		}
+	}
 	else {
 		if (isEnd())
 			footer = new_node;
-		prevPtr->next = new_node;
+		prevPtr->insertAfter(new_node);
 	}
 	currPtr = new_node;
 	++size;
 }
-//
+//当前结点后插入一个结点
 template <class T>
-void LinkedList<T>::insertFooter(const T & item) {
-	Node<T> * new_node = newNode(item, currPtr->next);
+void LinkedList<T>::insertAfter(const T & item) {
+	Node<T> * new_node = newNode(item);
 	if (!isEmpty()) {
 		if (isEnd()) {
 			error("Out of range.");
 			return;
 		}
-		if (currPtr->next == nullptr)
+		if (getPosition() == size - 1)
 			footer = new_node;
-		currPtr->next = new_node;
+		currPtr->insertAfter(new_node);
 	}
 	else {
 		header = footer = new_node;
@@ -214,25 +212,45 @@ void LinkedList<T>::insertFooter(const T & item) {
 	++position;
 	++size;
 }
-//
+//删除头结点
 template <class T>
 void LinkedList<T>::deleteHeader() {
 	reset();
 	deleteCurr();
 }
-//
+//删除尾结点
 template <class T>
 void LinkedList<T>::deleteFooter() {
 	reset(size - 1);
 	deleteCurr();
 }
-//
+//删除当前结点
 template <class T>
 void LinkedList<T>::deleteCurr() {
 	if (!isEmpty()) {
+		Node<T> * old_node;
 		if (!isHeader()) {
-			Node<T> * old_node;
+			if (isEnd()) {
+				error("Out of range.");
+				return;
+			}
 			old_node = prevPtr->deleteAfter();
+			currPtr = old_node->nextNode();
+			if (isEnd())
+				footer = prevPtr;
+			--size;
+			freeNode(old_node);
+		}
+		else {
+			old_node = currPtr;
+			currPtr = currPtr->nextNode();
+			header = currPtr;
+			if (getSize() == 1) {
+				footer = nullptr;
+				--position;
+			}
+			--size;
+			freeNode(old_node);
 		}
 	}
 }
