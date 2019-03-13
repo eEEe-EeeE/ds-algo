@@ -230,6 +230,9 @@ void LinkedList<T>::deleteFooter() {
 template <class T>
 void LinkedList<T>::deleteCurr() {
 	if (!isEmpty()) {
-
+		if (!isHeader()) {
+			Node<T> * old_node;
+			old_node = prevPtr->deleteAfter();
+		}
 	}
 }
