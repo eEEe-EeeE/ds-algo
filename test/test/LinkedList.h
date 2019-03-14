@@ -175,42 +175,82 @@ void LinkedList<T>::insertFooter(const T & item) {
 //当前结点前插入一个结点
 template <class T>
 void LinkedList<T>::insertBefore(const T & item) {
-	Node<T> * new_node = newNode(item, currPtr);
-	if (isHeader()) {
+	if (prevPtr != nullptr) {
+		Node<T> * new_node = newNode(item);
+		prevPtr->insertAfter(new_node);
+		if (isEnd())
+			footer = new_node;
+		currPtr = new_node;
+		++size;
+	}
+	else {
+		Node<T> * new_node = newNode(item, currPtr);
 		header = new_node;
 		if (isEmpty()) {
 			footer = new_node;
 			++position;
 		}
+		currPtr = new_node;
+		++size;
 	}
-	else {
-		if (isEnd())
-			footer = new_node;
-		prevPtr->insertAfter(new_node);
-	}
-	currPtr = new_node;
-	++size;
+	//Node<T> * new_node = newNode(item, currPtr);
+	//if (isHeader()) {
+	//	header = new_node;
+	//	if (isEmpty()) {
+	//		footer = new_node;
+	//		++position;
+	//	}
+	//}
+	//else {
+	//	if (isEnd())
+	//		footer = new_node;
+	//	prevPtr->insertAfter(new_node);
+	//}
+	//currPtr = new_node;
+	//++size;
 }
 //当前结点后插入一个结点
 template <class T>
 void LinkedList<T>::insertAfter(const T & item) {
-	Node<T> * new_node = newNode(item);
-	if (!isEmpty()) {
-		if (isEnd()) {
+	if (currPtr != nullptr) {
+		Node<T> * new_node = newNode(item);
+		currPtr->insertAfter(new_node);
+		prevPtr = currPtr;
+		currPtr = new_node;
+		++position;
+		++size;
+		if (getPosition() == size - 1)
+			footer = new_node;
+	}
+	else {
+		Node<T> * new_node = newNode(item);
+		if (isEmpty()) {
+			currPtr = header = footer = new_node;
+			++position;
+			++size;
+		}
+		else {
 			error("Out of range.");
 			return;
 		}
-		if (getPosition() == size - 1)
-			footer = new_node;
-		currPtr->insertAfter(new_node);
 	}
-	else {
-		header = footer = new_node;
-	}
-	prevPtr = currPtr;
-	currPtr = new_node;
-	++position;
-	++size;
+	//Node<T> * new_node = newNode(item);
+	//if (!isEmpty()) {
+	//	if (isEnd()) {
+	//		error("Out of range.");
+	//		return;
+	//	}
+	//	if (getPosition() == size - 1)
+	//		footer = new_node;
+	//	currPtr->insertAfter(new_node);
+	//}
+	//else {
+	//	header = footer = new_node;
+	//}
+	//prevPtr = currPtr;
+	//currPtr = new_node;
+	//++position;
+	//++size;
 }
 //删除头结点
 template <class T>
@@ -227,30 +267,56 @@ void LinkedList<T>::deleteFooter() {
 //删除当前结点
 template <class T>
 void LinkedList<T>::deleteCurr() {
-	if (!isEmpty()) {
+	if (currPtr != nullptr) {
 		Node<T> * old_node;
-		if (!isHeader()) {
-			if (isEnd()) {
-				error("Out of range.");
-				return;
-			}
-			old_node = prevPtr->deleteAfter();
+		if (isHeader()) {
+			old_node = currPtr;
 			currPtr = old_node->nextNode();
-			if (isEnd())
-				footer = prevPtr;
+			header = currPtr;
 			--size;
+			if (isEmpty()) {
+				position = -1;
+				footer = nullptr;
+			}
 			freeNode(old_node);
 		}
 		else {
-			old_node = currPtr;
-			currPtr = currPtr->nextNode();
-			header = currPtr;
-			if (getSize() == 1) {
-				footer = nullptr;
-				--position;
-			}
+			old_node = prevPtr->deleteAfter();
+			currPtr = old_node->nextNode();
 			--size;
+			if (isEnd())
+				footer = prevPtr;
 			freeNode(old_node);
 		}
 	}
+	else {
+		error("Out of range.");
+		return;
+	}
+	//if (!isEmpty()) {
+	//	Node<T> * old_node;
+	//	if (!isHeader()) {
+	//		if (isEnd()) {
+	//			error("Out of range.");
+	//			return;
+	//		}
+	//		old_node = prevPtr->deleteAfter();
+	//		currPtr = old_node->nextNode();
+	//		if (isEnd())
+	//			footer = prevPtr;
+	//		--size;
+	//		freeNode(old_node);
+	//	}
+	//	else {
+	//		old_node = currPtr;
+	//		currPtr = currPtr->nextNode();
+	//		header = currPtr;
+	//		if (getSize() == 1) {
+	//			footer = nullptr;
+	//			--position;
+	//		}
+	//		--size;
+	//		freeNode(old_node);
+	//	}
+	//}
 }

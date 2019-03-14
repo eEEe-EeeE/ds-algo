@@ -35,7 +35,7 @@ int main() {
 	for (int i = 0; i < 10; ++i) {
 		int item;
 		cin >> item;
-		list.insertBefore(item);
+		list.insertAfter(item);
 	}
 	cout << "List: ";
 	list.reset();
