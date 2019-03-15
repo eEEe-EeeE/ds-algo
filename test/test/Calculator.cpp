@@ -9,7 +9,12 @@ inline double stringToDouble(const string &str) {
 }
 
 void Calculator::enter(const double & num) {
-	stack.push(num);
+	if (!stack.isFull()) {
+		stack.push(num);
+	}
+	else {
+		error("Stack is full.");
+	}
 }
 
 bool Calculator::getTwoOperands(double & opnd1, double & opnd2) {
@@ -17,12 +22,14 @@ bool Calculator::getTwoOperands(double & opnd1, double & opnd2) {
 		opnd2 = stack.pop();
 	}
 	else {
+		error("opnd2: Stack is empty.");
 		return false;
 	}
 	if (!stack.isEmpty()) {
 		opnd1 = stack.pop();
 	}
 	else {
+		error("opnd1: Stack is empty");
 		return false;
 	}
 	return true;
@@ -44,7 +51,7 @@ void Calculator::compute(const char & op) {
 			break;
 		case '/':
 			if (opnd2 == 0) {
-				error("Dividing by zero.");
+				error("Divided by zero.");
 				stack.clear();
 			}
 			else {
@@ -53,7 +60,7 @@ void Calculator::compute(const char & op) {
 			break;
 		case '^':
 			if (opnd1 == 0 && opnd2 == 0) {
-				error("Meaningless.");
+				error("Zero power of zero.");
 				stack.clear();
 			}
 			else {
@@ -61,19 +68,25 @@ void Calculator::compute(const char & op) {
 			}
 			break;
 		default:
-			error("Unrecognized operator!");
+			error("Unrecognized operator.");
+			stack.clear();
 			break;
 		}
 		if (!stack.isEmpty()) 
 			cout << "= " << stack.peek() << endl;
+		else {
+			error("The expression is incorrect.Please re-enter: ");
+		}
 	}
 	else {
+		error("Not enough operands.");
 		stack.clear();
 	}
 }
 
 void Calculator::run() {
 	string exp;
+	cout << "q to quit." << endl;
 	while (cin >> exp, exp != "q") {
 		switch (exp[0]) {
 		case 'c':

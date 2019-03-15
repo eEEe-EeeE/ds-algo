@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+//栈的用户维护边界条件
 template <class T,int SIZE = 50>
 class Stack {
 private:
@@ -30,9 +31,7 @@ template <class T, int SIZE>
 
 template <class T, int SIZE>
 void Stack<T, SIZE>::push(const T & item) {
-	if (!isFull()) {
-		list[++top] = item;
-	}
+	list[++top] = item;
 }
 
 template <class T, int SIZE>
