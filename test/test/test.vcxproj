@@ -118,6 +118,7 @@
     <ClInclude Include="Account.h" />
     <ClInclude Include="Accumulator.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="Calculator.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Complex.h" />
     <ClInclude Include="CreditAccount.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Accumulator.cpp" />
     <ClCompile Include="Array.cpp" />
+    <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Complex.cpp" />
     <ClCompile Include="CreditAccount.cpp" />
