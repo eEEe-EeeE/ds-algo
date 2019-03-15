@@ -8,6 +8,7 @@
 #include "Clock.h"
 #include "Array.h"
 #include "LinkedList.h"
+#include "Calculator.h"
 
 using namespace std;
 
@@ -30,38 +31,9 @@ int main() {
 	/*Array<int> a(10);
 	printPrime(10);*/
 
-	LinkedList<int> list;
-	cout << "please enter 10 integers: ";
-	for (int i = 0; i < 10; ++i) {
-		int item;
-		cin >> item;
-		list.insertAfter(item);
-	}
-	cout << "List: ";
-	list.reset();
-	while (!list.isEnd()) {
-		cout << list.data() << " ";
-		list.next();
-	}
-	cout << endl;
-	int key;
-	cout << "please enter some integer needed to be deleted: ";
-	cin >> key;
-	list.reset();
-	while (!list.isEnd()) {
-		if (list.data() == key) {
-			list.deleteCurr();
-			continue;
-		}
-		list.next();
-	}
-	cout << "List: ";
-	list.reset();
-	while (!list.isEnd()) {
-		cout << list.data() << " ";
-		list.next();
-	}
-	cout << endl;
+	Calculator cal;
+	cal.run();
+	cal.clear();
 
 
 

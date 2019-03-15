@@ -10,19 +10,22 @@ private:
 		std::cout << msg << std::endl;
 	}
 public:
-	bool isEmpty() { return top == -1; }
-	bool isFull() { return top == SIZE - 1; }
+	Stack();
+	bool isEmpty() const { return top == -1; }
+	bool isFull() const { return top == SIZE - 1; }
 	const T & peek() const;
 	void push(const T & item);
 	T pop();
 	void clear();
 };
+template <class T, int SIZE>
+Stack<T, SIZE>::Stack() :
+	top(-1) {
+}
 
 template <class T, int SIZE>
-const T & Stack<T, SIZE>::peek() const {
-	if (!isEmpty()) {
-		return list[top];
-	}
+ const T & Stack<T, SIZE>::peek() const {
+	return list[top];
 }
 
 template <class T, int SIZE>
@@ -34,9 +37,7 @@ void Stack<T, SIZE>::push(const T & item) {
 
 template <class T, int SIZE>
 T Stack<T, SIZE>::pop() {
-	if (!isEmpty()) {
-		return list[top--];
-	}
+	return list[top--];
 }
 
 template <class T, int SIZE>

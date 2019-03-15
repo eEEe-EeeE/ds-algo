@@ -7,6 +7,7 @@
 class Calculator {
 private:
 	Stack<double> stack;
+
 	void enter(const double & num);
 	bool getTwoOperands(double & opnd1, double & opnd2);
 	void compute(const char & op);
