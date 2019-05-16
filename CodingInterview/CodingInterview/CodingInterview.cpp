@@ -2,10 +2,18 @@
 //
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include "Utils.h"
+using std::cout;
+using std::cin;
+using std::endl;
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	int arr[] = { 1,5,9,10,9,2 };
+	std::vector<int> vec{ 1,5,9,10,9,2 };
+	std::max(1, 2);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
