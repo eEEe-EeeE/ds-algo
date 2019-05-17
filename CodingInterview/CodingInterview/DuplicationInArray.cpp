@@ -1,6 +1,6 @@
 #include "Utils.h"
 #include <iostream>
-bool duplicationInArray(int arr[], int arrLength, int v) {
+bool duplicationInArray(int arr[], int arrLength, int* duplication) {
 	if (Utils<int>::maxInArray(arr, arrLength) >= arrLength) {
 		std::cout << "arr's max data is error." << std::endl;
 		return false;
@@ -18,6 +18,7 @@ bool duplicationInArray(int arr[], int arrLength, int v) {
 				--index;
 			}
 			else {
+				*duplication = arr[index];
 				return true;
 			}
 		}

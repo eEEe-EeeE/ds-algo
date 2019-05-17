@@ -4,16 +4,25 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include "Utils.h"
+#include "CodingInterview.h"
+
 using std::cout;
 using std::cin;
 using std::endl;
 
+template <class T>
+std::size_t arrayLength(T& arr) {
+	return sizeof(arr) / sizeof(arr[0]);
+}
+
 int main()
 {
-	int arr[] = { 1,5,9,10,9,2 };
-	std::vector<int> vec{ 1,5,9,10,9,2 };
-	std::max(1, 2);
+	int arr[] = { 5,2,2,0,1,3 };
+	int* dup = new int(0);
+	cout << duplicationInArray(arr, arrayLength(arr), dup) << endl;
+	if (dup != nullptr)
+		cout << *dup << endl;
+	
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

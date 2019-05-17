@@ -153,9 +153,11 @@
   <ItemGroup>
     <ClCompile Include="CodingInterview.cpp" />
     <ClCompile Include="DuplicationInArray.cpp" />
+    <ClCompile Include="DuplicationInArrayNoEdit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMyString.h" />
+    <ClInclude Include="CodingInterview.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
