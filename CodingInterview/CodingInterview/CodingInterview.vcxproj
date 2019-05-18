@@ -154,6 +154,7 @@
     <ClCompile Include="CodingInterview.cpp" />
     <ClCompile Include="DuplicationInArray.cpp" />
     <ClCompile Include="DuplicationInArrayNoEdit.cpp" />
+    <ClCompile Include="FindInPartiallySortedMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMyString.h" />
