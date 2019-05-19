@@ -155,12 +155,14 @@
     <ClCompile Include="DuplicationInArray.cpp" />
     <ClCompile Include="DuplicationInArrayNoEdit.cpp" />
     <ClCompile Include="FindInPartiallySortedMatrix.cpp" />
+    <ClCompile Include="PrintListInReversedOrder.cpp" />
+    <ClCompile Include="ReplaceSpaces.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMyString.h" />
     <ClInclude Include="CodingInterview.h" />
+    <ClInclude Include="ListNode.h" />
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

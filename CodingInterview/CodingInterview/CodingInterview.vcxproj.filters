@@ -27,6 +27,12 @@
     <ClCompile Include="FindInPartiallySortedMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ReplaceSpaces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintListInReversedOrder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMyString.h">
@@ -35,10 +41,10 @@
     <ClInclude Include="Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="CodingInterview.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CodingInterview.h">
+    <ClInclude Include="ListNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
