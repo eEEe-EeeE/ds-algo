@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stack>
 
+
 void printListInReversedOrder(ListNode* pHead) {
 	ListNode* pCount = pHead;
 	std::stack<int> sp;
