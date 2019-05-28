@@ -10,8 +10,8 @@ typedef struct {
 	ListNode* pHead;
 } LinkedList;
 
+LinkedList* createList();
+void dropList(LinkedList* list);
 void insertNode(LinkedList* list, int data);
-void insertNode(int index, int data);
-void deleteNode(int data);
-void deleteNode(int index, int data);
+void deleteNode(LinkedList* list, int index);
 #endif // !_LINKEDLIST_H

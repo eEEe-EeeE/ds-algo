@@ -1,14 +1,14 @@
-#include "ListNode.h"
+#include "LinkedList.h"
 #include <iostream>
 #include <stack>
 
 
-void printListInReversedOrder(ListNode* pHead) {
-	ListNode* pCount = pHead;
+void printListInReversedOrder(LinkedList* list) {
+	ListNode* p = list->pHead;
 	std::stack<int> sp;
-	while (pCount != nullptr) {
-		sp.push(pCount->m_Key);
-		pCount = pCount->m_pNext;
+	while (p != nullptr) {
+		sp.push(p->m_Key);
+		p = p->m_pNext;
 	}
 
 	while (!sp.empty()) {

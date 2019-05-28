@@ -163,7 +163,6 @@
     <ClInclude Include="CMyString.h" />
     <ClInclude Include="CodingInterview.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="ListNode.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

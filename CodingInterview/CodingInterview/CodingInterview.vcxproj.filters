@@ -47,9 +47,6 @@
     <ClInclude Include="CodingInterview.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>

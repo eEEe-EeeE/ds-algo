@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include "CodingInterview.h"
-#include "ListNode.h"
+#include "LinkedList.h"
 
 using std::cout;
 using std::cin;
@@ -16,9 +16,11 @@ using std::endl;
 
 int main()
 {
-	char a[10];
-	cout << arrayLength(a) << endl;
-
+	LinkedList* list = createList();
+	insertNode(list, 1);
+	insertNode(list, 3);
+	insertNode(list, 2);
+	printListInReversedOrder(list);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
