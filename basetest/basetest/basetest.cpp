@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <Windows.h>
@@ -34,10 +35,8 @@ int main() {
 	/*Array<int> a(10);
 	printPrime(10);*/
 
-	Calculator cal;
-	cal.run();
-	cal.clear();
-	system("pause");
+	// confirm a stream's state
+	
 }
 
 void printPrime(const int& n) {
