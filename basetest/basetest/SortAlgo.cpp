@@ -33,15 +33,9 @@ std::vector<T> SortAlgo<T>::insertionSort(std::vector<T>& _arr) {
 	T cur_e;
 	for (int i = 1; i != arr.size(); ++i) {
 		cur_e = arr[i];
-		for (int j = i - 1; j != -1; --j) {
-			if (cur_e > arr[j]) {
-				arr[j + 1] = cur_e;
-				break;
-			}
-			else
-				arr[j + 1] = arr[j];
+		for (int j = i - 1; j != -1 && cur_e <= arr[j]; --j) {
+			arr[j + 1] = arr[j];
 		}
-		if (j == -1)
-			arr[j + 1] = cur_e;
+		arr[j + 1] = cur_e;
 	}
 }
