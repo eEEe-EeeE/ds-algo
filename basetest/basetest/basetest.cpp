@@ -36,7 +36,10 @@ int main() {
 	printPrime(10);*/
 
 	// confirm a stream's state
-	
+
+	vector<int> nums;
+	const int x = 1;
+	decltype(x) y = 2;
 }
 
 void printPrime(const int& n) {
