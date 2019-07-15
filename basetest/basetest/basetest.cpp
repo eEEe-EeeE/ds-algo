@@ -13,6 +13,8 @@
 #include "Array.h"
 #include "LinkedList.h"
 #include "Calculator.h"
+#include "SortAlgo.h"
+#include "A.h"
 
 using namespace std;
 
@@ -37,9 +39,13 @@ int main() {
 
 	// confirm a stream's state
 
-	vector<int> nums;
-	const int x = 1;
-	decltype(x) y = 2;
+	vector<int> nums{ 3,44,38,5,47,15,36,26,27,2,46,4,19,50,48 };
+
+	vector<int> res = SortAlgo<int>().bubbleSort(nums);
+	for (auto& e : res) {
+		cout << e << " ";
+	}
+	cout << endl;
 }
 
 void printPrime(const int& n) {
