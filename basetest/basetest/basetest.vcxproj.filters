@@ -45,9 +45,6 @@
     <ClCompile Include="SavingsAccount.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortAlgo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="A.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

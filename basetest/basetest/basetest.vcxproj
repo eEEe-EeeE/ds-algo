@@ -162,7 +162,6 @@
     <ClCompile Include="CreditAccount.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="SavingsAccount.cpp" />
-    <ClCompile Include="SortAlgo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A.h" />
