@@ -44,7 +44,7 @@ public:
 		for (int i = 1; i != arr.size(); ++i) {
 			cur_e = arr[i];
 			int j = 0;
-			for (j = i - 1; j != -1 && cur_e <= arr[j]; --j) {
+			for (j = i - 1; j >= 0 && cur_e <= arr[j]; --j) {
 				arr[j + 1] = arr[j];
 			}
 			arr[j + 1] = cur_e;
@@ -53,9 +53,20 @@ public:
 
 	std::vector<T> shellSort(std::vector<T>& _arr) {
 		std::vector<T> arr(_arr);
-		for (gap = arr.size(); gap >= 1; gap = gap / 3 + 1) {
-
+		// 增量序列有多少个增量就进行多少趟排序
+		for (int gap = arr.size(); gap >= 1; gap = gap / 3 + 1) {
+			for (int i = gap; i != arr.size(); ++i) {
+				T cur_e = arr[i];
+				int j = 0;
+				for (j = i - gap; j >= 0 && cur_e < arr[j]; j -= gap) {
+					arr[j + gap] = arr[j];
+				}
+				arr[j + gap] = cur_e;
+			}
+			if (gap == 1)
+				break;
 		}
+		return arr;
 	}
 
 };

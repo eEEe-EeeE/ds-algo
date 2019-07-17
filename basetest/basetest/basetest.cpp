@@ -41,8 +41,14 @@ int main() {
 
 	vector<int> nums{ 3,44,38,5,47,15,36,26,27,2,46,4,19,50,48 };
 
-	vector<int> res = SortAlgo<int>().bubbleSort(nums);
-	for (auto& e : res) {
+	vector<int> res1 = SortAlgo<int>().bubbleSort(nums);
+	for (auto& e : res1) {
+		cout << e << " ";
+	}
+	cout << endl;
+
+	vector<int> res2 = SortAlgo<int>().shellSort(nums);
+	for (auto& e : res2) {
 		cout << e << " ";
 	}
 	cout << endl;
