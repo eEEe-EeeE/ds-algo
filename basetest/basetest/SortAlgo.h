@@ -12,50 +12,53 @@ private:
 		e2 = temp;
 	}
 public:
-	std::vector<T> bubbleSort(std::vector<T>& _arr);
-	std::vector<T> selectionSort(std::vector<T>& _arr);
-	std::vector<T> insertionSort(std::vector<T>& _arr);
-};
 
-template <class T>
-std::vector<T> SortAlgo<T>::bubbleSort(std::vector<T>& _arr) {
-	std::vector<T> arr(_arr);
-	for (int i = 1; i != arr.size(); ++i) {
-		for (int j = 0; j != arr.size() - 1; ++j) {
-			if (arr[j] > arr[j + 1]) {
-				swap(arr[j], arr[j + 1]);
+	std::vector<T> bubbleSort(std::vector<T>& _arr) {
+		std::vector<T> arr(_arr);
+		for (int i = 1; i != arr.size(); ++i) {
+			for (int j = 0; j != arr.size() - 1; ++j) {
+				if (arr[j] > arr[j + 1]) {
+					swap(arr[j], arr[j + 1]);
+				}
 			}
 		}
+		return arr;
 	}
-	return arr;
-}
 
-template <class T>
-std::vector<T> SortAlgo<T>::selectionSort(std::vector<T>& _arr) {
-	std::vector<T> arr(_arr);
-	int min_e = 0;
-	for (int i = 1; i != arr.size(); ++i) {
-		for (int j = i - 1; j != arr.size(); ++j) {
-			if (arr[j] < arr[min_e])
-				min_e = j;
+	std::vector<T> selectionSort(std::vector<T>& _arr) {
+		std::vector<T> arr(_arr);
+		int min_e = 0;
+		for (int i = 1; i != arr.size(); ++i) {
+			for (int j = i - 1; j != arr.size(); ++j) {
+				if (arr[j] < arr[min_e])
+					min_e = j;
+			}
+			swap(arr[i - 1], arr[min_e]);
 		}
-		swap(arr[i - 1], arr[min_e]);
+		return arr;
 	}
-	return arr;
-}
+	
+	std::vector<T> insertionSort(std::vector<T>& _arr) {
+		std::vector<T> arr(_arr);
+		T cur_e;
+		for (int i = 1; i != arr.size(); ++i) {
+			cur_e = arr[i];
+			int j = 0;
+			for (j = i - 1; j != -1 && cur_e <= arr[j]; --j) {
+				arr[j + 1] = arr[j];
+			}
+			arr[j + 1] = cur_e;
+		}
+	}
 
-template <class T>
-std::vector<T> SortAlgo<T>::insertionSort(std::vector<T>& _arr) {
-	std::vector<T> arr(_arr);
-	T cur_e;
-	for (int i = 1; i != arr.size(); ++i) {
-		cur_e = arr[i];
-		int j = 0;
-		for (j = i - 1; j != -1 && cur_e <= arr[j]; --j) {
-			arr[j + 1] = arr[j];
+	std::vector<T> shellSort(std::vector<T>& _arr) {
+		std::vector<T> arr(_arr);
+		for (gap = arr.size(); gap >= 1; gap = gap / 3 + 1) {
+
 		}
-		arr[j + 1] = cur_e;
 	}
-}
+
+};
+
 
 #endif
