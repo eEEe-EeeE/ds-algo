@@ -61,7 +61,8 @@ public:
 				for (j = i - gap; j >= 0 && cur_e < arr[j]; j -= gap) {
 					arr[j + gap] = arr[j];
 				}
-				arr[j + gap] = cur_e;
+				if (i != j + gap)
+					arr[j + gap] = cur_e;
 			}
 			if (gap == 1)
 				break;
