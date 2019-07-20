@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <cmath>
 #include <Windows.h>
 #include "SavingsAccount.h"
 #include "CreditAccount.h"
@@ -52,6 +53,20 @@ int main() {
 		cout << e << " ";
 	}
 	cout << endl;
+
+	vector<int> res3 = SortAlgo<int>().mergeSort(nums);
+	for (auto& e : res3) {
+		cout << e << " ";
+	}
+	cout << endl;
+
+	vector<int> res4 = SortAlgo<int>().quickSort(nums);
+	for (auto& e : res4) {
+		cout << e << " ";
+	}
+	cout << endl;
+
+
 }
 
 void printPrime(const int& n) {
