@@ -153,6 +153,13 @@ public:
 		return boundary;
 	}
 
+	std::vector<T> heapSort(const std::vector<T>& _arr) {
+	}
+
+	void heapify(std::vector<T>& arr, int index);
+
+	void buildMaxHeap(std::vector<T>& arr);
+
 };
 
 
