@@ -75,7 +75,7 @@ public:
 
 	std::vector<T> mergeSort(const std::vector<T>& _arr) {
 		const std::vector<T>& arr(_arr);
-		auto&& mid_iter = arr.begin() + floor((arr.cend() - arr.cbegin()) / 2);
+		auto&& mid_iter = arr.begin() + floor((arr.end() - arr.begin()) / 2);
 		std::vector<T> left_seq(arr.begin(), mid_iter);
 		std::vector<T> right_seq(mid_iter, arr.end());
 		if (arr.size() < 2)
@@ -154,11 +154,39 @@ public:
 	}
 
 	std::vector<T> heapSort(const std::vector<T>& _arr) {
+		std::vector<T> arr(_arr);
+		hSort(arr);
+		return arr;
 	}
 
-	void heapify(std::vector<T>& arr, int index);
+	void hSort(std::vector<T>& arr) {
+		buildMaxHeap(arr);
+		for (auto arrLen = arr.size() - 1; arrLen > 0; --arrLen) {
+			swap(arr[0], arr[arrLen]);
+			heapify(arr, 0);
+		}
+	}
 
-	void buildMaxHeap(std::vector<T>& arr);
+	void heapify(std::vector<T>& arr, int index) {
+		int left_child = 2 * index + 1;
+		int right_child = 2 * index + 2;
+		int largest = index;
+		if (left_child < int(arr.size()) && arr[left_child] > arr[index])
+			largest = left_child;
+		if (right_child < int(arr.size()) && arr[right_child] > arr[index])
+			largest = right_child;
+
+		if (index != largest) {
+			swap(arr[largest], arr[index]);
+			heapify(arr, index);
+		}
+	}
+
+	void buildMaxHeap(std::vector<T>& arr) {
+		for (auto index = 0; index != floor(arr.size() / 2); ++index) {
+			heapify(arr, index);
+		}
+	}
 
 };
 

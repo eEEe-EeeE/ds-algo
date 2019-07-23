@@ -60,7 +60,7 @@ int main() {
 	}
 	cout << endl;
 
-	vector<int> res4 = SortAlgo<int>().quickSort(nums);
+	vector<int> res4 = SortAlgo<int>().heapSort(nums);
 	for (auto& e : res4) {
 		cout << e << " ";
 	}
