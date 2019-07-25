@@ -66,6 +66,12 @@ int main() {
 	}
 	cout << endl;
 
+	vector<int> res5 = SortAlgo<int>().countingSort(nums);
+	for (auto& e : res5) {
+		cout << e << " ";
+	}
+	cout << endl;
+
 
 }
 

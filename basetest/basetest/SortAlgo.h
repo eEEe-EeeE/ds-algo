@@ -14,6 +14,15 @@ private:
 		e1 = e2;
 		e2 = temp;
 	}
+
+	int maxElementIndex(const std::vector<T>& arr) {
+		int max_index = 0;
+		for (int index = 0; index != arr.size(); ++index) {
+			if (arr[index] > arr[max_index])
+				max_index = index;
+		}
+		return max_index;
+	}
 public:
 
 	std::vector<T> bubbleSort(std::vector<T>& _arr) {
@@ -155,37 +164,51 @@ public:
 
 	std::vector<T> heapSort(const std::vector<T>& _arr) {
 		std::vector<T> arr(_arr);
-		hSort(arr);
+		buildMaxHeap(arr);
+		for (int index = arr.size() - 1; index > 0; --index) {
+			swap(arr[0], arr[index]);
+			heapify(arr, index, 0);
+		}
 		return arr;
 	}
 
-	void hSort(std::vector<T>& arr) {
-		buildMaxHeap(arr);
-		for (auto arrLen = arr.size() - 1; arrLen > 0; --arrLen) {
-			swap(arr[0], arr[arrLen]);
-			heapify(arr, 0);
-		}
-	}
-
-	void heapify(std::vector<T>& arr, int index) {
-		int left_child = 2 * index + 1;
-		int right_child = 2 * index + 2;
-		int largest = index;
-		if (left_child < int(arr.size()) && arr[left_child] > arr[index])
+	void heapify(std::vector<T>& arr, int arrLen, int parent_index) {
+		int left_child = 2 * parent_index + 1;
+		int right_child = 2 * parent_index + 2;
+		int largest = parent_index;
+		if (left_child < arrLen && arr[left_child] > arr[largest])
 			largest = left_child;
-		if (right_child < int(arr.size()) && arr[right_child] > arr[index])
+		if (right_child < arrLen && arr[right_child] > arr[largest])
 			largest = right_child;
 
-		if (index != largest) {
-			swap(arr[largest], arr[index]);
-			heapify(arr, index);
+		if (parent_index != largest) {
+			swap(arr[largest], arr[parent_index]);
+			heapify(arr, arrLen, largest);
 		}
 	}
 
 	void buildMaxHeap(std::vector<T>& arr) {
-		for (auto index = 0; index != floor(arr.size() / 2); ++index) {
-			heapify(arr, index);
+		for (auto index = floor(arr.size() / 2); index >= 0; --index) {
+			heapify(arr, arr.size(), index);
 		}
+	}
+
+	std::vector<T> countingSort(const std::vector<T>& _arr) {
+		std::vector<T> arr(_arr.size(), 0);
+		int max_index = maxElementIndex(_arr);
+		T max_elem = _arr[max_index];
+		std::vector<T> countingArr(max_elem + 1, 0);
+		for (int index = 0; index < _arr.size(); ++index) {
+			countingArr[_arr[index]] = countingArr[_arr[index]] + 1;
+		}
+		for (int index = 0; index < countingArr.size() - 1; ++index) {
+			countingArr[index + 1] += countingArr[index];
+		}
+		for (int index = arr.size() - 1; index >= 0; --index) {
+			arr[countingArr[_arr[index]] - 1] = _arr[index];
+			--countingArr[_arr[index]];
+		}
+		return arr;
 	}
 
 };
