@@ -34,7 +34,7 @@ private:
 
 public:
 
-	std::vector<int> bubbleSort(std::vector<int>& _arr) {
+	std::vector<int> bubbleSort(const std::vector<int>& _arr) {
 		std::vector<int> arr(_arr);
 		for (int i = 1; i != arr.size(); ++i) {
 			for (int j = 0; j != arr.size() - 1; ++j) {
@@ -46,20 +46,21 @@ public:
 		return arr;
 	}
 
-	std::vector<int> selectionSort(std::vector<int>& _arr) {
+	std::vector<int> selectionSort(const std::vector<int>& _arr) {
 		std::vector<int> arr(_arr);
-		int min_e = 0;
+		int min_index;
 		for (int i = 1; i != arr.size(); ++i) {
+			min_index = i - 1;
 			for (int j = i - 1; j != arr.size(); ++j) {
-				if (arr[j] < arr[min_e])
-					min_e = j;
+				if (arr[j] < arr[min_index])
+					min_index = j;
 			}
-			swap(arr[i - 1], arr[min_e]);
+			swap(arr[i - 1], arr[min_index]);
 		}
 		return arr;
 	}
 	
-	std::vector<int> insertionSort(std::vector<int>& _arr) {
+	std::vector<int> insertionSort(const std::vector<int>& _arr) {
 		std::vector<int> arr(_arr);
 		int cur_e;
 		for (int i = 1; i != arr.size(); ++i) {
@@ -70,9 +71,10 @@ public:
 			}
 			arr[j + 1] = cur_e;
 		}
+		return arr;
 	}
 
-	std::vector<int> shellSort(std::vector<int>& _arr) {
+	std::vector<int> shellSort(const std::vector<int>& _arr) {
 		std::vector<int> arr(_arr);
 		// 增量序列有多少个增量就进行多少趟排序
 		for (int gap = arr.size(); gap >= 1; gap = gap / 3 + 1) {
@@ -93,7 +95,7 @@ public:
 
 	std::vector<int> mergeSort(const std::vector<int>& _arr) {
 		const std::vector<int>& arr(_arr);
-		auto&& mid_iter = arr.begin() + floor((arr.end() - arr.begin()) / 2);
+		auto&& mid_iter = arr.begin() + (arr.end() - arr.begin()) / 2;
 		std::vector<int> left_seq(arr.begin(), mid_iter);
 		std::vector<int> right_seq(mid_iter, arr.end());
 		if (arr.size() < 2)
@@ -154,7 +156,7 @@ public:
 	}
 
 	vector_iterator partition(std::vector<int>& arr, vector_iterator left, vector_iterator right) {
-		auto pivot = left + floor((right - left) / 2); // 基准可以随机选取
+		auto pivot = left + (right - left) / 2; // 基准可以随机选取
 		swap(*left, *pivot); // 把基准放在最左边，以便后续容易定位到基准
 		pivot = left;
 		auto boundary = left; // boundary是尾后迭代器
@@ -202,7 +204,7 @@ public:
 	}
 
 	void buildMaxHeap(std::vector<int>& arr) {
-		for (auto index = floor(arr.size() / 2); index >= 0; --index) {
+		for (int index = arr.size() / 2; index >= 0; --index) {
 			heapify(arr, arr.size(), index);
 		}
 	}
@@ -212,10 +214,10 @@ public:
 		int max_index = maxElementIndex(_arr);
 		int max_elem = _arr[max_index];
 		std::vector<int> countingArr(max_elem + 1, 0);
-		for (int index = 0; index < _arr.size(); ++index) {
+		for (size_t index = 0; index < _arr.size(); ++index) {
 			countingArr[_arr[index]] = countingArr[_arr[index]] + 1;
 		}
-		for (int index = 0; index < countingArr.size() - 1; ++index) {
+		for (size_t index = 0; index < countingArr.size() - 1; ++index) {
 			countingArr[index + 1] += countingArr[index];
 		}
 		for (int index = arr.size() - 1; index >= 0; --index) {
@@ -243,6 +245,42 @@ public:
 			arr.insert(arr.end(), buckets[index].begin(), buckets[index].end());
 		}
 		return arr;
+	}
+
+	std::vector<int> radixSort(const std::vector<int>& _arr) {
+		int maxDigit = getMaxDigit(_arr);
+		int mod = 10;
+		int dev = 1;
+		const int radix = 10;
+		std::vector<int> arr(_arr);
+		std::vector<int> buckets[radix];
+
+		for (int index = 0; index < maxDigit; ++index, mod *= 10, dev *= 10) {
+			int bucket;
+			for (auto& e : arr) {
+				bucket = (e % mod) / dev;
+				buckets[bucket].push_back(e);
+			}
+			arr.clear();
+
+			for (auto& bucket : buckets) {
+				for (auto& e : bucket)
+					arr.push_back(e);
+				bucket.clear();
+			}
+
+		}
+
+		return arr;
+	}
+
+	int getMaxDigit(const std::vector<int>& arr) {
+		int maxValue = arr[maxElementIndex(arr)];
+		int length;
+		for (length = 0; maxValue != 0; maxValue /= 10) {
+			++length;
+		}
+		return length;
 	}
 
 };

@@ -40,7 +40,7 @@ int main() {
 
 	// confirm a stream's state
 
-	vector<int> nums{ 3,44,38,5,47,15,36,26,27,2,46,4,19,50,48 };
+	const vector<int> nums{ 3,44,38,5,47,15,36,26,27,2,46,4,19,50,48 };
 
 	vector<int> res1 = SortAlgo().bubbleSort(nums);
 	for (auto& e : res1) {
@@ -77,6 +77,31 @@ int main() {
 		cout << e << " ";
 	}
 	cout << endl;
+
+	vector<int> res7 = SortAlgo().radixSort(nums);
+	for (auto& e : res7) {
+		cout << e << " ";
+	}
+	cout << endl;
+
+	vector<int> res8 = SortAlgo().insertionSort(nums);
+	for (auto& e : res8) {
+		cout << e << " ";
+	}
+	cout << endl;
+
+	vector<int> res9 = SortAlgo().selectionSort(nums);
+	for (auto& e : res9) {
+		cout << e << " ";
+	}
+	cout << endl;
+
+	vector<int> res0 = SortAlgo().quickSort(nums);
+	for (auto& e : res0) {
+		cout << e << " ";
+	}
+	cout << endl;
+
 }
 
 void printPrime(const int& n) {
