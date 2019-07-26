@@ -42,37 +42,41 @@ int main() {
 
 	vector<int> nums{ 3,44,38,5,47,15,36,26,27,2,46,4,19,50,48 };
 
-	vector<int> res1 = SortAlgo<int>().bubbleSort(nums);
+	vector<int> res1 = SortAlgo().bubbleSort(nums);
 	for (auto& e : res1) {
 		cout << e << " ";
 	}
 	cout << endl;
 
-	vector<int> res2 = SortAlgo<int>().shellSort(nums);
+	vector<int> res2 = SortAlgo().shellSort(nums);
 	for (auto& e : res2) {
 		cout << e << " ";
 	}
 	cout << endl;
 
-	vector<int> res3 = SortAlgo<int>().mergeSort(nums);
+	vector<int> res3 = SortAlgo().mergeSort(nums);
 	for (auto& e : res3) {
 		cout << e << " ";
 	}
 	cout << endl;
 
-	vector<int> res4 = SortAlgo<int>().heapSort(nums);
+	vector<int> res4 = SortAlgo().heapSort(nums);
 	for (auto& e : res4) {
 		cout << e << " ";
 	}
 	cout << endl;
 
-	vector<int> res5 = SortAlgo<int>().countingSort(nums);
+	vector<int> res5 = SortAlgo().countingSort(nums);
 	for (auto& e : res5) {
 		cout << e << " ";
 	}
 	cout << endl;
 
-
+	vector<int> res6 = SortAlgo().bucketSort(nums);
+	for (auto& e : res6) {
+		cout << e << " ";
+	}
+	cout << endl;
 }
 
 void printPrime(const int& n) {
