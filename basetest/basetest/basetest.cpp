@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <unordered_set>
+#include <unordered_map>
 #include <cmath>
 #include <Windows.h>
 #include "SavingsAccount.h"
@@ -102,7 +104,51 @@ int main() {
 	//	cout << e << " ";
 	//}
 	//cout << endl;
-	
+
+	vector<int> nums1{ 1,2,6,8,9,123,566 }, nums2{ };
+	vector<int> res;
+	size_t nums1_size = nums1.size();
+	size_t nums2_size = nums2.size();
+	size_t res_size = (nums1_size + nums2_size) / 2 + 1;
+	int nums1_index = 0;
+	int nums2_index = 0;
+	int cnt = 0;
+
+	while (cnt < res_size) {
+		if (nums1_index == nums1_size) {
+			while (nums2_index < nums2_size) {
+				res.push_back(nums2[nums2_index]);
+				++nums2_index;
+				++cnt;
+			}
+		}
+		else if (nums2_index == nums2_size) {
+			while (nums1_index < nums1_size) {
+				res.push_back(nums1[nums1_index]);
+				++nums1_index;
+				++cnt;
+			}
+		}
+		else {
+			if (nums1[nums1_index] <= nums2[nums2_index]) {
+				res.push_back(nums1[nums1_index]);
+				++nums1_index;
+			}
+			else {
+				res.push_back(nums2[nums2_index]);
+				++nums2_index;
+			}
+			++cnt;
+		}
+	}
+
+	if ((nums1_size + nums2_size) % 2 != 0) {
+		cout << res[res_size - 1] * 1.0;
+	}
+	else {
+		cout << (res[res_size - 1] + res[res_size - 2]) * 1.0 / 2;
+	}
+
 	
 }
 
