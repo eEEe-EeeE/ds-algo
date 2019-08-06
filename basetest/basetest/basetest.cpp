@@ -1,30 +1,13 @@
 // basetest.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <cmath>
-#include <Windows.h>
-#include "SavingsAccount.h"
-#include "CreditAccount.h"
-#include "Complex.h"
-#include "Clock.h"
-#include "Array.h"
-#include "LinkedList.h"
-#include "Calculator.h"
-#include "SortAlgo.h"
+
+#include "basetest.h"
+
 #include "A.h"
 
 using namespace std;
 
-
-void printPrime(const int& n);
-int startUp(Date& date, Account* account[], const int& n);
 
 int main() {
 
@@ -105,52 +88,29 @@ int main() {
 	//}
 	//cout << endl;
 
-	vector<int> nums1{ 1,2,6,8,9,123,566 }, nums2{ };
-	vector<int> res;
-	size_t nums1_size = nums1.size();
-	size_t nums2_size = nums2.size();
-	size_t res_size = (nums1_size + nums2_size) / 2 + 1;
-	int nums1_index = 0;
-	int nums2_index = 0;
-	int cnt = 0;
+	string s("");
+	int palindromic_begin = 0;
+	int maxlength = 0;
+	for (int index = 0; index != s.size(); ++index) {
 
-	while (cnt < res_size) {
-		if (nums1_index == nums1_size) {
-			while (nums2_index < nums2_size) {
-				res.push_back(nums2[nums2_index]);
-				++nums2_index;
-				++cnt;
-			}
-		}
-		else if (nums2_index == nums2_size) {
-			while (nums1_index < nums1_size) {
-				res.push_back(nums1[nums1_index]);
-				++nums1_index;
-				++cnt;
-			}
-		}
-		else {
-			if (nums1[nums1_index] <= nums2[nums2_index]) {
-				res.push_back(nums1[nums1_index]);
-				++nums1_index;
-			}
-			else {
-				res.push_back(nums2[nums2_index]);
-				++nums2_index;
-			}
-			++cnt;
-		}
 	}
-
-	if ((nums1_size + nums2_size) % 2 != 0) {
-		cout << res[res_size - 1] * 1.0;
-	}
-	else {
-		cout << (res[res_size - 1] + res[res_size - 2]) * 1.0 / 2;
-	}
-
+	
+	string res(s, palindromic_begin, maxlength);
+	cout << res;
 	
 }
+
+bool isPalindromic(string s, int left, int right) {
+	while (left <= right) {
+		if (s[left] != s[right])
+			return false;
+		++left;
+		--right;
+	}
+	return true;
+}
+
+
 
 void printPrime(const int& n) {
 	Array<int> arr(0);

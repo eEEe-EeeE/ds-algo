@@ -168,6 +168,7 @@
     <ClInclude Include="Account.h" />
     <ClInclude Include="Accumulator.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="basetest.h" />
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Complex.h" />
