@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <stack>
 #include <map>
 #include <unordered_set>
 #include <unordered_map>
@@ -19,3 +20,4 @@
 void printPrime(const int& n);
 int startUp(Date& date, Account* account[], const int& n);
 bool isPalindromic(std::string s, int left, int right);
+bool solution();
