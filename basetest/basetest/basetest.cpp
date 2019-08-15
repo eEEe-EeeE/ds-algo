@@ -89,29 +89,6 @@ int main() {
 	//cout << endl;
 
 	cout << solution();
-	
-}
-
-bool solution() {
-	int x = INT_MIN;
-	int num = x;
-	int rev = 0;
-	if (num < 0)
-		return false;
-	else {
-		while (num != 0) {
-			if (rev > INT_MAX / 10 || rev == INT_MAX / 10 && num % 10 > INT_MAX % 10)
-				return false;
-			if (rev < INT_MIN / 10 || rev == INT_MIN / 10 && num % 10 < INT_MIN % 10)
-				return false;
-			rev = rev * 10 + num % 10;
-			num /= 10;
-		}
-	}
-	if (rev == x)
-		return true;
-	else
-		return false;
 }
 
 bool isPalindromic(string s, int left, int right) {
